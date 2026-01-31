@@ -20,15 +20,22 @@ h1{
   margin-bottom: 20px;
 }
 
+#options{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 #options button{
   display: black;
-  width: 100px;
-  margin: 8px 0;
+  width: 100%;
+  margin: 12px;
   padding: 10px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   background-color: #e0e0e0;
+  text-align: center;
 }
 
 #options button.correct{
