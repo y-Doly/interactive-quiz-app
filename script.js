@@ -87,3 +87,80 @@ const questionBank = [
     answer: "POST"
   }
 ];
+
+// Shuffle questions dynamically
+let questions = questionBank.sort(() => Math.random() - 0.5);
+
+let index = 0;
+let score = 0;
+let answered = false;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const quizEl = document.getElementById("quiz");
+const resultEl = document.getElementById("result");
+const scoreEl = document.getElementById("score");
+
+function loadQuestion() {
+  answered = false;
+  nextBtn.disabled = true;
+  optionsEl.innerHTML = "";
+
+  const current = questions[index];
+  questionEl.textContent = current.q;
+
+  current.options.forEach(option => {
+    const btn = document.createElement("button");
+    btn.textContent = option;
+    btn.onclick = () => checkAnswer(btn, current.answer);
+    optionsEl.appendChild(btn);
+  });
+}
+
+function checkAnswer(button, correct) {
+  if (answered) return;
+  answered = true;
+  nextBtn.disabled = false;
+
+  const buttons = optionsEl.querySelectorAll("button");
+
+  buttons.forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent === correct) {
+      btn.classList.add("correct");
+    }
+  });
+
+  if (button.textContent !== correct) {
+    button.classList.add("wrong");
+  } else {
+    score++;
+  }
+}
+
+nextBtn.onclick = () => {
+  index++;
+  if (index < questions.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+};
+
+function showResult() {
+  quizEl.classList.add("hidden");
+  resultEl.classList.remove("hidden");
+  scoreEl.textContent = `Score: ${score} / ${questions.length}`;
+}
+
+function restartQuiz() {
+  index = 0;
+  score = 0;
+  questions = questionBank.sort(() => Math.random() - 0.5);
+  quizEl.classList.remove("hidden");
+  resultEl.classList.add("hidden");
+  loadQuestion();
+}
+
+loadQuestion();
