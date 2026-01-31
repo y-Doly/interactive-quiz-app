@@ -14,5 +14,8 @@ Users can answer questions, receive instant feedback, and view thier final score
 2. CSS
 3. Javascript
 
+## Live Demo
+https://y-doly.github.io/interactive-quiz-app/
+
 ## Author 
 Doly Yadav
