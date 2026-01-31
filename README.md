@@ -14,5 +14,5 @@ Users can answer questions, receive instant feedback, and view thier final score
 2. CSS
 3. Javascript
 
-##Author 
+## Author 
 Doly Yadav
