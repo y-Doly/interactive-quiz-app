@@ -1,6 +1,6 @@
 # Interactive Quiz Application
 
-An interractive quiz application bbuilt using HTML, CSS and Javascript.
+An interractive quiz application built using HTML, CSS and Javascript.
 Users can answer questions, receive instant feedback, and view thier final score.
 
 ## Features
